@@ -19,7 +19,7 @@ The only downside (yet) is having to pass NULL as the final argument (will attem
 
 %f     -> replace it with a floating point number (float and double, floats will always be implicitly converted to double, does not work with integers, sorry again)
 
-%.f    -> works in the same way as the previous one (%f)
+%.f    -> works the same way as the previous one (%f)
 
 %.xf   -> takes floats/doubles and prints with the first x decimal places
 
