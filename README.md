@@ -34,3 +34,11 @@ example.c is a short example of it's usage.
 
 I hope this function makes someone's life a little bit easier :D
 That's it! Have a nice day :)
+
+
+
+
+TO DO:
+Implement dynamic spaces mid arguments. Currently new lining at the end of a string will result in the next line being spaced.
+
+
