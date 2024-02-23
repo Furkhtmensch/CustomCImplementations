@@ -1,14 +1,14 @@
 # CustomCImplementations
-Some custom C implementations which appeal more to my taste.
+  Some custom C implementations which appeal more to my taste.
 
 
 
-nprint.h is a header composed of 3 functions, two of which serve as support for convertion from integer/float to string format with as many decimal places as you want (255 limit, close enough. Logically, you can change it).
+  nprint.h is a header composed of 3 functions, two of which serve as support for convertion from integer/float to string format with as many decimal places as you want (255 limit, close enough. Logically, you can change it).
 nprint() is a function which is similar to python's print() (helpful for people who like python's simplicity and flexibility with the print() function), although it supports printf for every string passed to the function.
 The only downside (yet) is having to pass NULL as the final argument (will attempt to remove the need for it). It's necessary because I haven't found a way to check when the end of arguments is reached.
 
 
-The way you use it is simple: You pass a string, you may insert %<char> somewhere in it and then you must pass, as arguments, left-to-right order, the corresponding value so that the symbols are replaced. Then, in the end, you pass NULL (as the very last argument). You may pass as many strings as you want (separated by commas, which means they are separate arguments!), as well as as many %<char> symbols as you want. Here is the list of currently implemented values:
+  The way you use it is simple: You pass a string, you may insert %<char> somewhere in it and then you must pass, as arguments, left-to-right order, the corresponding value so that the symbols are replaced. Then, in the end, you pass NULL (as the very last argument). You may pass as many strings as you want (separated by commas, which means they are separate arguments!), as well as as many %<char> symbols as you want. Here is the list of currently implemented values:
 
 
 %c     -> replace it with a character (single quotes :D)
