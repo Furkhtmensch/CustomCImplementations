@@ -28,7 +28,8 @@ The only downside (yet) is having to pass NULL as the final argument (will attem
 %.xxxf -> takes float/double and prints with the first xxx decimal places (change the limit of decimal places and you can use even more 'x' :D)
 
 
-In order to include it in your program, all you need to do is bring the nprint.h into the program folder and write the beginning include "nprint.h" (simple tutorial, if you want to use it differently to the research yourself)
+In order to include it in your program, all you need to do is bring the nprint.h into the program folder and write the beginning include "nprint.h" (simple tutorial, if you want to use it differently to the research yourself).
+example.c is a short example of it's usage.
 
 
 I hope this function makes someone's life a little bit easier :D
