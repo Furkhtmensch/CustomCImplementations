@@ -3,8 +3,8 @@ Some custom C implementations which appeal more to my taste.
 
 
 
-  nprint.h is a header composed of 3 functions, two of which serve as support for convertion from integer/float to string format with as many decimal places as you want (255 limit, close enough. Logically, you can change it).
-nprint() is a function which is similar to python's print() (helpful for people who like python's simplicity and flexibility with the print() function), although it supports printf for every string passed to the function.
+  nprint.h is a header composed of 3 functions, two of which serve as support for convertion from integer to string format and float/double to string format, the latter with as many decimal places as you wish (255 limit, close enough. Logically, you can change it).
+nprint() is a function which is similar to python's print() (helpful for people who prefer python's simplicity and flexibility with the print() function), although it supports printf() %<char> way of working for every string passed to the function.
 The only downside (yet) is having to pass NULL as the final argument (will attempt to remove the need for it). It's necessary because I haven't found a way to check when the end of arguments is reached.
 
 
@@ -19,7 +19,7 @@ The only downside (yet) is having to pass NULL as the final argument (will attem
 
 %f     -> replace it with a floating point number (float and double, floats will always be implicitly converted to double, does not work with integers, sorry again)
 
-%.f    -> works the in the same way as the previous one (%f)
+%.f    -> works in the same way as the previous one (%f)
 
 %.xf   -> takes floats/doubles and prints with the first x decimal places
 
