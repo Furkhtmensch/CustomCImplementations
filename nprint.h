@@ -43,6 +43,7 @@ int nprint(char* first, ...) {
     char* argument = first;
     while (argument != NULL) {
         int i = 0;
+        int lastchar = 0;
         while (argument[i]) {
             if (argument[i] == '%') {
                 i++;
@@ -69,7 +70,7 @@ int nprint(char* first, ...) {
                         if (argument[i + 1]) {
                             i += 1;
                         } else {
-                            nprint("\nERROR! Following a '.' (for floating point representation) the must be the number of decimal places, ending the number with an 'f'! (the limit for them is 255!) \n", NULL);
+                            nprint("\nERROR! Following a '.' (for floating point representation) there must be the number of decimal places, ending the number with an 'f'! (the limit for them is 255!) \n", NULL);
                             return 3;
                         }
                         if (argument[i] == 'f') {
@@ -112,8 +113,11 @@ int nprint(char* first, ...) {
                 putc(argument[i], stdout);
                 i++;
             }
+            lastchar = argument[i - 1];
         }
-        putc(' ', stdout);
+        if (lastchar != 10) {
+            putc(' ', stdout);
+        }
         argument = va_arg(arguments, char*);
     }
     va_end(arguments);
