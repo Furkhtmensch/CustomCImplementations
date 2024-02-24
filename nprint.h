@@ -143,7 +143,7 @@ int main() {
 
 /*
 
-The function call must end in NULL (as in last argument) or else it won't work!
+The function call must end in NULL (as in last argument) or 0, or else it won't work!
 %<char> will work for c (char), s (string) and i (integers ONLY, which means that if you use float then it will not be represented properly) 
 If you use any other character then it will print the whole %<char>
 Use at your own caution (although I don't think this will ever be able to cause any issues)
