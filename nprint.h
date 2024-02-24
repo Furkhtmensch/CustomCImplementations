@@ -131,7 +131,6 @@ Example of usage:
 /*
 
 int main() {
-    char str[40] = "Sou mais fixe do que tu";
     nprint("Hi there, %c' Great %s! \n", 'O', "Miquella!", "There you go: %.13f! \n", 3.031234, NULL);
     return 0;
 }
