@@ -39,6 +39,8 @@ That's it! Have a nice day :)
 It's customizable (supposing you know some C).
 
 TO DO:
-Implement dynamic spaces mid arguments. Currently new lining at the end of a string will result in the next line being spaced.
-
+Make nprint be able to take a variable/data type other than strings and print them directly (just like python's print());
+Remove the need to have either NULL or 0 as the final argument;
+Both objectives are a little bit far-fetched as of now.
+Add random stuff I (or you <3) find useful.
 
