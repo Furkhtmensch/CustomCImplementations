@@ -63,6 +63,10 @@ For the binput() you must create the static array yourself and give it as the fi
 
 It's customizable (supposing you know some C).
 
+
+Not made for performance improments or anything. They do what they do, no relations to performance boosting (example of "bad" performance code: reallocating memory every 100 characters of input, as well as in the end of input)
+
+
 TO DO:
 Make print be able to take a variable/data type other than strings and print them directly (just like python's print());
 Remove the need to have either NULL or 0 as the final argument;
