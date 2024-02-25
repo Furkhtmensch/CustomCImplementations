@@ -36,7 +36,32 @@ int nftos(double n, int t, FILE* stream) {
     return 0;
 }
 
-int nprint(char* first, ...) {
+int dprint(int n, ...) {
+    va_list arguments;
+    va_start(arguments, n);
+    while (n > 0) {
+        nitos(va_arg(arguments, int), stdout);
+        putc(' ', stdout);
+        n--;
+    }
+    int t = 2;
+// uncomment this if statement if you want to be able to choose the number of decimal places (n < 0 is the number of arguments for a floats, ALL FLOATS, the same way that if you use positive number it's all INTS)
+/*
+    if (n < 0) {
+        t = va_arg(arguments, int);
+    }
+*/
+    while (n < 0) {
+        nftos(va_arg(arguments, double), t, stdout);
+        putc(' ', stdout);
+        n++;
+    }
+    putc(10, stdout);
+    va_end(arguments);
+    return 0;
+}
+
+int print(char* first, ...) {
     va_list arguments;
     va_start(arguments, first);
     int nextargs = 0;
@@ -47,6 +72,9 @@ int nprint(char* first, ...) {
         while (argument[i]) {
             if (argument[i] == '%') {
                 i++;
+                if (argument[i] == 'd') {
+                    argument[i] = 'i';
+                }
                 switch (argument[i]) {
                     case 'c': {
                         putc(va_arg(arguments, int), stdout);
@@ -70,7 +98,7 @@ int nprint(char* first, ...) {
                         if (argument[i + 1]) {
                             i += 1;
                         } else {
-                            nprint("\nERROR! Following a '.' (for floating point representation) there must be the number of decimal places, ending the number with an 'f'! (the limit for them is 255!) \n", NULL);
+                            print("\nERROR! Following a '.' (for floating point representation) there must be the number of decimal places, ending the number with an 'f'! (the limit for them is 255!) \n", NULL);
                             return 3;
                         }
                         if (argument[i] == 'f') {
@@ -86,13 +114,13 @@ int nprint(char* first, ...) {
                             }
                             c += 10*c + argument[i] - 48;
                             if (c > 256) {
-                                nprint("\nERROR! The maximum number of decimal places is 255! (also, just in case, don't forget to follow the number of decimal places with an 'f') \n", NULL);
+                                print("\nERROR! The maximum number of decimal places is 255! (also, just in case, don't forget to follow the number of decimal places with an 'f') \n", NULL);
                                 return 999;
                             }
                             i++;
                         }
                         if (flag) {
-                            nprint("\nERROR! You must follow then number of decimal places with an 'f'! \n", NULL);
+                            print("\nERROR! You must follow then number of decimal places with an 'f'! \n", NULL);
                             return 3;
                         }
                         nftos(temp, c, stdout);
@@ -126,6 +154,57 @@ int nprint(char* first, ...) {
 }
 
 
+
+
+
+char* input() {
+    char* pointer;
+    char last = 0;
+    int currentSize = 0;
+    int maxSize = 100;
+    pointer = (char*) malloc(maxSize*sizeof(char));
+    do {
+        last = getc(stdin);
+        pointer[currentSize] = last;
+        currentSize++;
+        if (currentSize > maxSize) {
+            maxSize += 100;
+            pointer = realloc(pointer, maxSize*sizeof(char));
+        }
+    } while (last != 10);
+    pointer[currentSize - 1] = 0;
+    pointer = realloc(pointer, currentSize*sizeof(char));
+    return pointer;
+}
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//for input() ALWAYS save the string into a variable and then call free() for the function|
+//example:                                                                                |
+//free(<stringvariablename>);                                                             |
+//I suggest you use binput() if you don't know what a dynamic array is                    |
+//-----------------------------------------------------------------------------------------
+
+char* binput(char* buffer, int bufferSize) {
+    int i = 0;
+    int last = 0;
+    if (i < bufferSize) {
+        last = getc(stdin);
+        i++;
+    }
+    while (i < bufferSize && last != 10) {
+        buffer[i] = last;
+        last = getc(stdin);
+        i++;
+    }
+    return buffer;
+}
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//for binput(string, size) you must create your own string and pass it as the first argument, as well as it's size as the second argument|
+//----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 /*
 
 Example of usage:
@@ -143,7 +222,7 @@ int main() {
 
 /*
 
-The function call must end in NULL (as in last argument) or 0, or else it won't work!
+The function call must end in NULL (as in last argument) or else it won't work!
 %<char> will work for c (char), s (string) and i (integers ONLY, which means that if you use float then it will not be represented properly) 
 If you use any other character then it will print the whole %<char>
 Use at your own caution (although I don't think this will ever be able to cause any issues)
