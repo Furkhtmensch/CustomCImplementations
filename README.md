@@ -36,6 +36,16 @@ I hope this function makes someone's life a little bit easier :D
 That's it! Have a nice day :)
 
 
+input() and binput() both read and store all text into dynamically allocated memory arrays and statically allocated memory arrays, respectively.
+
+This means that input() returns the pointer to a dynamic array with the exact same size as the input it received (you can remove this feature as it may have somewhat of a performance impact for larger inputs).
+
+This also means that you must save the pointer and free() it after you're done using it. A more through explanation is in the nprint.h file.
+
+For the binput() you must create the static array yourself and give it as the first function argument, as well as the it's size as the second argument. That's it, I guess.
+
+
+
 It's customizable (supposing you know some C).
 
 TO DO:
@@ -43,4 +53,6 @@ Make nprint be able to take a variable/data type other than strings and print th
 Remove the need to have either NULL or 0 as the final argument;
 Both objectives are a little bit far-fetched as of now.
 Add random stuff I (or you <3) find useful.
+
+Create functions for reading from specified files as well as writing into specified files (up next).
 
