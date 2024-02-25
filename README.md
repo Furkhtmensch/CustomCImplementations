@@ -3,8 +3,8 @@ Some custom C implementations which appeal more to my taste.
 
 
 
-  nprint.h is a header composed of 3 functions, two of which serve as support for convertion from integer to string format and float/double to string format, the latter with as many decimal places as you wish (255 limit, close enough. Logically, you can change it).
-nprint() is a function which is similar to python's print() (helpful for people who prefer python's simplicity and flexibility with the print() function), although it supports printf() %<char> way of working for every string passed to the function.
+  print.h is a header composed of 3 functions, two of which serve as support for convertion from integer to string format and float/double to string format, the latter with as many decimal places as you wish (255 limit, close enough. Logically, you can change it in the CIOTools.h file).
+print() is a function which is similar to python's print() (helpful for people who prefer python's simplicity and flexibility with the print() function), although it supports printf() %<char> (mostly the same, although customizable, I guess) way of working for every string passed to the function.
 The only downside (yet) is having to pass either NULL or 0 as the final argument (will attempt to remove the need for it). It's necessary because I haven't found a way to check when the end of arguments is reached.
 
 
@@ -17,6 +17,8 @@ The only downside (yet) is having to pass either NULL or 0 as the final argument
 
 %i     -> replace it with an integer (integers ONLY, no implicit conversions, sorry not sorry)
 
+%d     -> works the same way as the previous one (%i)
+
 %f     -> replace it with a floating point number (float and double, floats will always be implicitly converted to double, does not work with integers, sorry again)
 
 %.f    -> works the same way as the previous one (%f)
@@ -28,7 +30,15 @@ The only downside (yet) is having to pass either NULL or 0 as the final argument
 %.xxxf -> takes float/double and prints with the first xxx decimal places (change the limit of decimal places and you can use even more 'x' :D)
 
 
-In order to include it in your program, all you need to do is bring the nprint.h into the program folder and write the beginning include "nprint.h" (simple tutorial, if you want to use it differently to the research yourself).
+
+dprint() is a rather specific function. It takes as the first argument the number of following arguments. For example, dprint(3, 1, 2, 3); outputs:"1 2 3\n".
+
+
+However, it also works for floats/doubles, all you have to do is pass a negative argument as the first argument, instead. Example: dprint(-3, 1.13, 2.2, 3.213); outputs:"1.13 2.20 3.21\n" (that is, disregarding the possible floating pointer imprecisions). As you have seen, it shows 2 decimal places by default. You can change that if you want, all you need to do is go to CIOTools.h, look for the function and follow the comment's instructions. After you do, you can pass as the second argument the number of decimal places, such that: dprint(-3, 3, 1.13, 2.2, 3.213); outputs:"1.130 2.200 3.213\n".
+
+
+
+In order to include it in your program, all you need to do is bring the CIOTools.h into the program folder and write the beginning include "CIOTools.h" (simple tutorial, if you want to use it differently to the research yourself).
 example.c is a short example of it's usage.
 
 
@@ -36,11 +46,16 @@ I hope this function makes someone's life a little bit easier :D
 That's it! Have a nice day :)
 
 
+
+
+
+
+
 input() and binput() both read and store all text into dynamically allocated memory arrays and statically allocated memory arrays, respectively.
 
 This means that input() returns the pointer to a dynamic array with the exact same size as the input it received (you can remove this feature as it may have somewhat of a performance impact for larger inputs).
 
-This also means that you must save the pointer and free() it after you're done using it. A more through explanation is in the nprint.h file.
+This also means that you must save the pointer and free() it after you're done using it. A more through explanation is in the CIOTools.h file.
 
 For the binput() you must create the static array yourself and give it as the first function argument, as well as the it's size as the second argument. That's it, I guess.
 
@@ -49,7 +64,7 @@ For the binput() you must create the static array yourself and give it as the fi
 It's customizable (supposing you know some C).
 
 TO DO:
-Make nprint be able to take a variable/data type other than strings and print them directly (just like python's print());
+Make print be able to take a variable/data type other than strings and print them directly (just like python's print());
 Remove the need to have either NULL or 0 as the final argument;
 Both objectives are a little bit far-fetched as of now.
 Add random stuff I (or you <3) find useful.
