@@ -3,7 +3,7 @@ Some custom C implementations which appeal more to my taste.
 
 
 
-  CIOTools.h is a header composed of 3 functions, two of which serve as support for convertion from integer to string format and float/double to string format, the latter with as many decimal places as you wish (255 limit, close enough. Logically, you can change it in the CIOTools.h file).
+  CIOTools.h is a header composed of some functions, two of which serve as support for convertion from integer to string format and float/double to string format, the latter with as many decimal places as you wish (255 limit, close enough. Logically, you can change it in the CIOTools.h file).
 print() is a function which is similar to python's print() (helpful for people who prefer python's simplicity and flexibility with the print() function), although it supports printf() %<char> (mostly the same, although customizable, I guess) way of working for every string passed to the function.
 The only downside (yet) is having to pass either NULL or 0 as the final argument (will attempt to remove the need for it). It's necessary because I haven't found a way to check when the end of arguments is reached.
 
