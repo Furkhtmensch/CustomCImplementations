@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include "CIOTools.h"
 
 int nitos(int n, FILE* stream) {
     if (n == 0) {
