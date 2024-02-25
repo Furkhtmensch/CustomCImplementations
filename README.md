@@ -73,5 +73,8 @@ Remove the need to have either NULL or 0 as the final argument;
 Both objectives are a little bit far-fetched as of now.
 Add random stuff I (or you <3) find useful.
 
-Create functions for reading from specified files as well as writing into specified files (up next).
+
+UP NEXT:
+Create functions for converting strings into integers/floats and such (up next).
+Create functions for reading from specified files as well as writing into specified files (after the one that's next :^) ).
 
