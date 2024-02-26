@@ -1,6 +1,8 @@
 #ifndef
 #define CIOTOOLS_H
 
+#include "CIOTools.c"
+
 int nitos(int n, FILE* stream);
 
 int nftos(double n, int t, FILE* stream);
