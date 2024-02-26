@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
 #include "CIOTools.h"
 
 int nitos(int n, FILE* stream) {
@@ -155,6 +152,19 @@ int print(char* first, ...) {
 }
 
 
+int nstoi(char* s) {
+    int i = 0;
+    int result = 0;
+    while (s[i] != 0) {
+        if (s[i] < 48 || s[i] > 57) {
+            print("ERROR! The passed string includes non-digit characters!", 0);
+            return 0;
+        }
+        result = result*10 + (s[i] - 48);
+        i++;
+    }
+    return result;
+}
 
 
 
@@ -190,7 +200,6 @@ char* binput(char* buffer, int bufferSize) {
     int last = 0;
     if (i < bufferSize) {
         last = getc(stdin);
-        i++;
     }
     while (i < bufferSize && last != 10) {
         buffer[i] = last;
