@@ -61,7 +61,7 @@ For the binput() you must create the static array yourself and give it as the fi
 
 
 
-It's customizable (supposing you know some C).
+It's customizable (assuming you know some C).
 
 
 Not made for performance improments or anything. They do what they do, no relations to performance boosting (example of "bad" performance code: reallocating memory every 100 characters of input, as well as in the end of input)
