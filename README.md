@@ -78,3 +78,6 @@ UP NEXT:
 Create functions for converting strings into integers/floats and such (up next).
 Create functions for reading from specified files as well as writing into specified files (after the one that's next :^) ).
 
+
+URGENT:
+Update printPascal() for larger numbers (better spacing/formatting).
