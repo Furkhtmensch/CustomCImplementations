@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void buildPascal(int** result, int n, int k) {
+void buildPascal(long** result, int n, int k) {
     for (int i = 0; i < k; i++) {
         result[k][i] += result[k - 1][i];
         result[k][i + 1] += result[k - 1][i];
@@ -12,12 +12,12 @@ void buildPascal(int** result, int n, int k) {
     return;
 }
 
-int** initPascal(int n) {
-    int** result;
-    result = (int**)malloc(n*sizeof(int*));
+long** initPascal(int n) {
+    long** result;
+    result = (long**)malloc(n*sizeof(long*));
     int mem = 1;
     for (int i = 0; i < n; i++) {
-        result[i] = (int*)malloc(mem*sizeof(int));
+        result[i] = (long*)malloc(mem*sizeof(long));
         for (int j = 0; j < mem; j++) {
             result[i][j] = 0;
         }
@@ -37,7 +37,7 @@ void printPascal(int n, int yoffset, int xoffset, int yoptions) {
         }
     }
     int mem = 1;
-    int** triangle = initPascal(n);
+    long** triangle = initPascal(n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n - mem + xoffset; j++) {
             printf(" ");
