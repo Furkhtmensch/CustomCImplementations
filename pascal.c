@@ -43,7 +43,7 @@ void printPascal(int n, int yoffset, int xoffset, int yoptions) {
             printf(" ");
         }
         for (int j = 0; j < mem; j++) {
-            printf("%ul ", triangle[i][j]);
+            printf("%u ", triangle[i][j]);
         }
         printf("\n");
         mem++;
